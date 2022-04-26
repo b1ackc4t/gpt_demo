@@ -30,6 +30,7 @@ class PreTrainDataSet(data.Dataset):
 
 class TrainDataSet(data.Dataset):
     def __init__(self, tokens_len):
+        ws = pickle.load(open("./obj/ws.pcl", "rb"))
         self.data = [(ws.transform(tokenlize(text), tokens_len), label) for i, text, label in df_pre]
 
     def __len__(self):
